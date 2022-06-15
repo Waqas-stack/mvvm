@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:mvvm_arch/Resoures/colorss/app_color.dart';
 
 class CutomButton extends StatelessWidget {
@@ -23,7 +24,9 @@ class CutomButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(10)
 
         ),
-        child: Center(child: Text(tittle)),
+        child:loading?Center(child: CircularProgressIndicator(color: Colors.white60,)): Center(child: Text(tittle,style: GoogleFonts.lato(
+          color: Colors.white
+        ),)),
       ),
     );
   }
