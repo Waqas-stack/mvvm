@@ -20,6 +20,7 @@ class SplashServics{
 
   void Checkauth(BuildContext context){
   getUSeruser().then((value)async{
+
     print(value.token.toString());
     if(value.token.toString()=="null"||value.token.toString()==""){
      await Future.delayed(Duration(seconds: 3));

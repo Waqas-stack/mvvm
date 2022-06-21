@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:mvvm_arch/utiles/utiles.dart';
 import 'package:provider/provider.dart';
 
@@ -31,7 +33,7 @@ class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     final authviewmodel=Provider.of<AuthViewmodel>(context);
-    final height=MediaQuery.of(context).size.height*1;
+    // final height=MediaQuery.of(context).size.height*1;
     return SafeArea(
       child: Scaffold(
         // appBar: AppBar(
@@ -50,7 +52,6 @@ class _LoginState extends State<Login> {
                 decoration: const InputDecoration(
                     hintText: "Email",
                     prefix: Icon(Icons.alternate_email,color: Colors.indigo,),
-                    labelText: "Email"
                 ),
                 onFieldSubmitted: (value){
                   Utils.Focusschange(context, emailfocus, passwordfocus);
@@ -70,7 +71,6 @@ class _LoginState extends State<Login> {
                       decoration: InputDecoration(
                           hintText: "Password",
                           prefix: Icon(Icons.lock_open_rounded,color: Colors.indigo,),
-                          labelText: "password",
                           suffixIcon:
                           InkWell(
                             onTap: (){
@@ -86,7 +86,7 @@ class _LoginState extends State<Login> {
                   }
               ),
               SizedBox(
-                height: height*.1,
+                height: 12.h
               ),
               CutomButton(
                 loading: authviewmodel.loading,
@@ -99,16 +99,19 @@ class _LoginState extends State<Login> {
                   Utils.flushbarError("please Enter 6 digit password", context);
                 }else{
                   Map data={
-                    "email":email.text.trim().toString(),
-                    "password":password.text.trim().toString(),
+                    // "email":email.text.trim().toString(),
+                    // "password":password.text.trim().toString(),
+                    "email": "eve.holt@reqres.in",
+                    "password": "cityslicka"
                   };
+
                   authviewmodel.loginapi(data,context);
                   print("api hit");
                 }
 
               }, tittle: 'login',),
               SizedBox(
-                height: height*.02,
+                height: 12.h
               ),
               TextButton(onPressed: (){
                 Navigator.pushNamed(context, RoutsName.signup);

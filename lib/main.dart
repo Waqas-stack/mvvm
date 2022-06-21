@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mvvm_arch/utiles/routes/routes.dart';
 import 'package:mvvm_arch/utiles/routes/routs_name.dart';
 import 'package:mvvm_arch/view/loginscreen.dart';
@@ -16,26 +17,32 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-        providers: [
-          ChangeNotifierProvider(create: (_)=>AuthViewmodel()),
-          ChangeNotifierProvider(create: (_)=>Userviewmodel()),
+    return ScreenUtilInit(
+      designSize: const Size(360, 690),
+      minTextAdapt: true,
+      splitScreenMode: true,
+      builder: (BuildContext context, Widget? child) {
+        return
+          MultiProvider(
+            providers: [
+              ChangeNotifierProvider(create: (_)=>AuthViewmodel()),
+              ChangeNotifierProvider(create: (_)=>Userviewmodel()),
 
 
-        ],
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'Mvvm Arch',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
-        initialRoute: RoutsName.splash,
-        onGenerateRoute: Routes.genrateRoute,
+            ],
+            child: MaterialApp(
+              debugShowCheckedModeBanner: false,
+              title: 'Mvvm Arch',
+              theme: ThemeData(
+                primarySwatch: Colors.blue,
+              ),
+              initialRoute: RoutsName.splash,
+              onGenerateRoute: Routes.genrateRoute,
+            ),
+          );
 
+      },
 
-      ),
     );
   }
 }
-
-

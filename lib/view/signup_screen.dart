@@ -50,7 +50,7 @@ class _SignupState extends State<Signup> {
                 decoration: const InputDecoration(
                     hintText: "Email",
                     prefix: Icon(Icons.alternate_email,color: Colors.indigo,),
-                    labelText: "Email"
+                    // labelText: "Email"
                 ),
                 onFieldSubmitted: (value){
                   Utils.Focusschange(context, emailfocus, passwordfocus);
@@ -70,7 +70,7 @@ class _SignupState extends State<Signup> {
                       decoration: InputDecoration(
                         hintText: "Password",
                         prefix: Icon(Icons.lock_open_rounded,color: Colors.indigo,),
-                        labelText: "password",
+                        // labelText: "password",
                         suffixIcon:
                         InkWell(
                             onTap: (){
@@ -99,8 +99,10 @@ class _SignupState extends State<Signup> {
                     Utils.flushbarError("please Enter 6 digit password", context);
                   }else{
                     Map data={
-                      "email":email.text.trim().toString(),
-                      "password":password.text.trim().toString(),
+                      // "email":email.text.trim().toString(),
+                      // "password":password.text.trim().toString(),
+                      "email": "eve.holt@reqres.in",
+                      "password": "pistol"
                     };
                     authviewmodel.Signapi(data,context);
                     print("api hit");

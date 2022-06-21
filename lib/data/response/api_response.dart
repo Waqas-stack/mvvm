@@ -8,12 +8,12 @@ class ApiResponses<T>{
 
   ApiResponses.loading(): status=Status.loading;
 
-  ApiResponses.completed(): status=Status.completed;
+  ApiResponses.completed(this.data): status=Status.completed;
 
-  ApiResponses.error(): status=Status.Error;
+  ApiResponses.error(this.message): status=Status.Error;
 @override
   String toString(){
-  return "status::$status /n Message:$message /n Data:$data";
+  return "status::$status \n Message:$message \n Data:$data";
 }
 
 }
